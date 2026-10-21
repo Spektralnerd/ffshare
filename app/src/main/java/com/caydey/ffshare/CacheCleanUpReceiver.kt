@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.caydey.ffshare.utils.MediaCompressor
 import timber.log.Timber
 import java.io.File
 
@@ -18,6 +19,13 @@ class CacheCleanUpReceiver: BroadcastReceiver() {
             UUID/UUID.jpg
             UUID/UUID.jpg
          */
+
+        // a conversion that runs for hours writes into a cache folder "older than one hour";
+        // skip this round, the alarm comes back in 12 hours
+        if (MediaCompressor.busy) {
+            Timber.d("Conversion running, cache clean-up skipped")
+            return
+        }
 
         Timber.d("Cleaning up cache")
 

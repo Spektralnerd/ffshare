@@ -1,0 +1,3 @@
+FFShare Deint 2.0.0-deint.7
+- New "Undo anime preset" button: brings back the settings from before the preset and lists every change first. Without saved settings (preset applied with an older version) it puts the settings the preset changes back to the app defaults
+- Preset and undo warn when a conversion is running

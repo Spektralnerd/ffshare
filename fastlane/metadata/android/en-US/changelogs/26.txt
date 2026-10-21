@@ -1,0 +1,4 @@
+FFShare Deint 2.0.0-deint.3
+- Two-pass: progress, fps and remaining time also in the analysis pass (read from the encoder's per-frame statistics; libaom/VP9 produce no packets there, ffmpeg itself reports no time)
+- Status line (pass, fps, remaining and running time) moved below the cancel button; long commands scroll in their box
+- A canceled conversion keeps its ffmpeg output in the logs

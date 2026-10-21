@@ -119,6 +119,8 @@
         <item>H.265/HEVC</item>
         <item>VP9</item>
         <item>MPEG-4</item>
+        <item>AV1 (hardware encoder if available, else software)</item>
+        <item>AV1 software only (libaom, slow)</item>
     </string-array>
     <string-array name="settings_video_codec_values">
         <item>COPY</item>
@@ -127,6 +129,25 @@
         <item>H265</item>
         <item>VP9</item>
         <item>MPEG4</item>
+        <item>AV1</item>
+        <item>AV1_SOFTWARE</item>
+    </string-array>
+
+    <string-array name="settings_av1_hw_bitrate">
+        <item>2 Mbit/s</item>
+        <item>4 Mbit/s</item>
+        <item>6 Mbit/s</item>
+        <item>8 Mbit/s</item>
+        <item>12 Mbit/s</item>
+        <item>16 Mbit/s</item>
+    </string-array>
+    <string-array name="settings_av1_hw_bitrate_values">
+        <item>2000</item>
+        <item>4000</item>
+        <item>6000</item>
+        <item>8000</item>
+        <item>12000</item>
+        <item>16000</item>
     </string-array>
 
     <string-array name="settings_audio_codec">
@@ -167,5 +188,212 @@
         <item>medium</item>
         <item>slow</item>
         <item>slower</item>
+    </string-array>
+
+    <string-array name="settings_deinterlace_frames">
+        <item>Only frames flagged as interlaced (progressive videos pass through)</item>
+        <item>All frames</item>
+    </string-array>
+    <string-array name="settings_deinterlace_frames_values">
+        <item>interlaced</item>
+        <item>all</item>
+    </string-array>
+
+    <string-array name="settings_deinterlace_mode">
+        <item>One frame per field: 50p / 60p (smooth motion)</item>
+        <item>One frame per frame: 25p / 30p</item>
+    </string-array>
+    <string-array name="settings_deinterlace_mode_values">
+        <item>send_field</item>
+        <item>send_frame</item>
+    </string-array>
+
+    <string-array name="settings_deinterlace_parity">
+        <item>Automatic (from stream flags)</item>
+        <item>Top field first</item>
+        <item>Bottom field first</item>
+    </string-array>
+    <string-array name="settings_deinterlace_parity_values">
+        <item>auto</item>
+        <item>tff</item>
+        <item>bff</item>
+    </string-array>
+
+    <string-array name="settings_deinterlace_aspect">
+        <item>As in source</item>
+        <item>4:3</item>
+        <item>16:9</item>
+    </string-array>
+    <string-array name="settings_deinterlace_aspect_values">
+        <item>SOURCE</item>
+        <item>DAR_4_3</item>
+        <item>DAR_16_9</item>
+    </string-array>
+
+    <string-array name="settings_deinterlace_method">
+        <item>bwdif (camcorder, TV, PVT recordings)</item>
+        <item>Field matching + bwdif (film/anime DVD, always 25p)</item>
+    </string-array>
+    <string-array name="settings_deinterlace_method_values">
+        <item>bwdif</item>
+        <item>fieldmatch</item>
+    </string-array>
+
+    <string-array name="settings_two_pass_bitrate">
+        <item>Keep CRF (constant quality + analysis pass)</item>
+        <item>60 kbit/s (≈ 11 MB video per 24 min)</item>
+        <item>80 kbit/s (≈ 14 MB per 24 min)</item>
+        <item>100 kbit/s (≈ 18 MB per 24 min)</item>
+        <item>120 kbit/s (≈ 22 MB per 24 min)</item>
+        <item>150 kbit/s (≈ 27 MB per 24 min)</item>
+        <item>200 kbit/s (≈ 36 MB per 24 min)</item>
+        <item>250 kbit/s (≈ 45 MB per 24 min)</item>
+        <item>300 kbit/s (≈ 54 MB per 24 min)</item>
+        <item>400 kbit/s (≈ 72 MB per 24 min)</item>
+        <item>500 kbit/s (≈ 90 MB per 24 min)</item>
+        <item>750 kbit/s</item>
+        <item>1000 kbit/s</item>
+        <item>1500 kbit/s</item>
+        <item>2000 kbit/s</item>
+        <item>3000 kbit/s</item>
+        <item>5000 kbit/s</item>
+    </string-array>
+    <string-array name="settings_two_pass_bitrate_values">
+        <item>0</item>
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>120</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>5000</item>
+    </string-array>
+
+    <string-array name="settings_av1_sw_speed">
+        <item>8 – realtime mode, fastest (default)</item>
+        <item>6 – good mode, fast</item>
+        <item>5</item>
+        <item>4 – balanced</item>
+        <item>3 – slow</item>
+        <item>2 – very slow (overnight / days)</item>
+        <item>1 – extremely slow</item>
+        <item>0 – slowest, hardly better than 1</item>
+    </string-array>
+    <string-array name="settings_av1_sw_speed_values">
+        <item>8</item>
+        <item>6</item>
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="settings_denoise">
+        <item>Off</item>
+        <item>Light, fast (hqdn3d)</item>
+        <item>NL-means, keeps line art (slow)</item>
+        <item>NL-means strong (noisy DVD / VHS)</item>
+    </string-array>
+    <string-array name="settings_denoise_values">
+        <item>off</item>
+        <item>hqdn3d</item>
+        <item>nlmeans</item>
+        <item>nlmeans_strong</item>
+    </string-array>
+
+    <string-array name="settings_test_excerpt">
+        <item>Off (whole video)</item>
+        <item>1 minute from the middle</item>
+        <item>2 minutes from the middle</item>
+        <item>5 minutes from the middle</item>
+    </string-array>
+    <string-array name="settings_test_excerpt_values">
+        <item>0</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+    </string-array>
+
+    <string-array name="settings_audio_bitrate">
+        <item>Encoder default</item>
+        <item>16 kbit/s</item>
+        <item>24 kbit/s</item>
+        <item>32 kbit/s</item>
+        <item>40 kbit/s</item>
+        <item>48 kbit/s</item>
+        <item>64 kbit/s</item>
+        <item>96 kbit/s</item>
+        <item>128 kbit/s</item>
+        <item>160 kbit/s</item>
+        <item>192 kbit/s</item>
+        <item>256 kbit/s</item>
+    </string-array>
+    <string-array name="settings_audio_bitrate_values">
+        <item>0</item>
+        <item>16</item>
+        <item>24</item>
+        <item>32</item>
+        <item>40</item>
+        <item>48</item>
+        <item>64</item>
+        <item>96</item>
+        <item>128</item>
+        <item>160</item>
+        <item>192</item>
+        <item>256</item>
+    </string-array>
+
+    <string-array name="settings_audio_channels">
+        <item>As source</item>
+        <item>Stereo (downmix)</item>
+        <item>Mono (downmix)</item>
+    </string-array>
+    <string-array name="settings_audio_channels_values">
+        <item>0</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="settings_audio_track">
+        <item>Chosen by ffmpeg (default)</item>
+        <item>Ask when sharing (tick the file\'s tracks)</item>
+        <item>Track 1</item>
+        <item>Track 2</item>
+        <item>Track 3</item>
+        <item>Track 4</item>
+        <item>All audio tracks</item>
+    </string-array>
+    <string-array name="settings_audio_track_values">
+        <item>0</item>
+        <item>-2</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="settings_subtitles">
+        <item>ffmpeg default (text subtitles only)</item>
+        <item>Copy all (MKV to MKV)</item>
+        <item>Ask when sharing (tick the tracks, MKV to MKV)</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="settings_subtitles_values">
+        <item>auto</item>
+        <item>copy</item>
+        <item>ask</item>
+        <item>none</item>
     </string-array>
 </resources>

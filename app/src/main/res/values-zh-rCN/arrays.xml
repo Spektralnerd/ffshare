@@ -119,6 +119,8 @@
         <item>H.265/HEVC</item>
         <item>VP9</item>
         <item>MPEG-4</item>
+        <item>AV1（有硬件编码器时使用硬件，否则软件）</item>
+        <item>仅 AV1 软件编码（libaom，慢）</item>
     </string-array>
     <string-array name="settings_video_codec_values">
         <item>COPY</item>
@@ -127,6 +129,8 @@
         <item>H265</item>
         <item>VP9</item>
         <item>MPEG4</item>
+        <item>AV1</item>
+        <item>AV1_SOFTWARE</item>
     </string-array>
 
     <string-array name="settings_audio_codec">

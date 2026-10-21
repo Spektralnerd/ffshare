@@ -1,0 +1,8 @@
+FFShare Deint 2.0.0-deint.2
+- Two-pass encoding (libaom AV1, VP9, x264) with target bitrate
+- Field matching for film/anime sources (PAL DVD to 25p), automatic black border crop, denoise (hqdn3d, NL-means)
+- libaom speed setting (realtime or good mode with 48 frames look-ahead), 10-bit AV1
+- Opus bitrate/channels, audio track selection, subtitle copy for MKV, test excerpt
+- Anime DVD preset button
+- Long conversions keep running with the screen off (foreground service, wake lock, notification with progress and remaining time); finished videos are also saved to Movies/FFShare Deint
+- Max resolution respects the display aspect ratio (anamorphic DVD/DV sources)

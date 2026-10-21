@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Android 7-9: saved copies go straight to the public Movies folder (they survive an uninstall);
+         Android 10+ uses MediaStore and needs no permission for that -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <!-- long conversions: foreground service with wake lock and progress notification -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".App"
@@ -39,10 +47,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.caydey.ffshare.MainActivity" />
         </activity>
+        <!-- configChanges: a dark mode switch at sunset or a font change must not recreate the
+             activity, that would start the conversion of the shared file a second time -->
         <activity
             android:name=".HandleMediaActivity"
             android:excludeFromRecents="true"
             android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode|density|fontScale|locale|layoutDirection"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -61,7 +72,7 @@
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.caydey.ffshare.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -72,6 +83,11 @@
             android:name=".CacheCleanUpReceiver"
             android:enabled="true"
             android:exported="false" />
+        <!-- "dataSync" covers local file processing; with targetSdk 34 there is no 6 h limit -->
+        <service
+            android:name=".EncodeService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
     </application>
 
 </manifest>

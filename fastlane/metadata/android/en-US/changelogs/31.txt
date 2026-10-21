@@ -1,0 +1,4 @@
+FFShare Deint 2.0.0-deint.8
+- Subtitles: new "Ask when sharing" (MKV to MKV), a list of the subtitle tracks with language, format and number of entries; the anime preset uses it
+- New "Filter once (FFV1 intermediate file)" for two-pass: the filters run once into a lossless file both passes read (about 15-35 % faster in tests, about 4 GB free needed per DVD episode, falls back by itself)
+- Corrected: two-pass hits the target size closely only for whole episodes

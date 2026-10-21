@@ -12,14 +12,20 @@ rm -rf "./ffmpeg-kit-next"
 git clone --branch $FFMPEG_KIT_TAG_VERSION --depth=1 "https://github.com/arthenica/ffmpeg-kit-next"
 
 
-# future
-# --enable-libaom
+# fork: libaom = software AV1 encoder; android-media-codec = hardware encoders via MediaCodec
+# (av1_mediacodec, hevc_mediacodec, h264_mediacodec) - off by default in ffmpeg-kit-next
+# fork: 32-bit ARM only as arm-v7a-neon (the original FFShare builds plain arm-v7a without NEON:
+# libaom, NL-means etc. then run as pure C, several times slower). Every ARMv7 CPU that runs
+# Android 7+ has NEON; the AAR then holds libffmpegkit_armv7a_neon.so + lib*_neon.so for
+# armeabi-v7a, which ffmpeg-kit's NativeLoader loads first.
 
 cd ffmpeg-kit-next
 ./nix-android.sh -p android-r27d \
   --jobs=$(nproc) \
-  --disable-x86 --disable-x86-64 --disable-arm-v7a-neon \
+  --disable-x86 --disable-x86-64 --disable-arm-v7a \
+  --enable-android-media-codec \
   --enable-dav1d \
+  --enable-libaom \
   --enable-fontconfig \
   --enable-freetype \
   --enable-fribidi \

@@ -1,6 +1,7 @@
 package com.caydey.ffshare
 
 import androidx.multidex.MultiDexApplication
+import com.caydey.ffshare.utils.MediaCompressor
 import timber.log.Timber
 
 class App: MultiDexApplication() {
@@ -21,5 +22,9 @@ class App: MultiDexApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+
+        // a fresh process runs no conversion: remove what a killed one left behind (a copied input
+        // can be gigabytes). Synchronous, so it can't race with a conversion that starts right after
+        MediaCompressor.removeLeftovers(this)
     }
 }

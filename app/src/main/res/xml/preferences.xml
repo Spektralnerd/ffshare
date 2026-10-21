@@ -107,6 +107,13 @@
             android:title="@string/settings_video_codec"
             android:entries="@array/settings_video_codec"
             android:entryValues="@array/settings_video_codec_values" />
+        <ListPreference
+            android:key="pref_av1_hw_bitrate"
+            android:defaultValue="6000"
+            android:title="@string/settings_av1_hw_bitrate"
+            android:summary="@string/settings_av1_hw_bitrate_summary"
+            android:entries="@array/settings_av1_hw_bitrate"
+            android:entryValues="@array/settings_av1_hw_bitrate_values" />
 
         <ListPreference
             android:key="pref_audio_codec"
@@ -130,6 +137,170 @@
             android:summary="@string/settings_max_image_resolution_summary"
             android:entries="@array/settings_max_resolution"
             android:entryValues="@array/settings_max_resolution_values" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="prefs_low_bitrate"
+        android:title="@string/settings_low_bitrate_title"
+        android:summary="@string/settings_low_bitrate_summary">
+        <Preference
+            android:key="pref_apply_anime_preset"
+            android:title="@string/settings_anime_preset"
+            android:summary="@string/settings_anime_preset_summary" />
+        <Preference
+            android:key="pref_undo_anime_preset"
+            android:title="@string/settings_anime_preset_undo"
+            android:summary="@string/settings_anime_preset_undo_summary_defaults" />
+        <SwitchPreference
+            android:key="pref_two_pass"
+            android:defaultValue="false"
+            android:title="@string/settings_two_pass"
+            android:summary="@string/settings_two_pass_summary" />
+        <ListPreference
+            android:key="pref_two_pass_bitrate"
+            android:dependency="pref_two_pass"
+            android:defaultValue="0"
+            android:summary="%s"
+            android:title="@string/settings_two_pass_bitrate"
+            android:entries="@array/settings_two_pass_bitrate"
+            android:entryValues="@array/settings_two_pass_bitrate_values" />
+        <SwitchPreference
+            android:key="pref_prefilter_ffv1"
+            android:dependency="pref_two_pass"
+            android:defaultValue="false"
+            android:title="@string/settings_prefilter"
+            android:summary="@string/settings_prefilter_summary" />
+        <ListPreference
+            android:key="pref_av1_sw_speed"
+            android:defaultValue="8"
+            android:summary="%s"
+            android:title="@string/settings_av1_sw_speed"
+            android:entries="@array/settings_av1_sw_speed"
+            android:entryValues="@array/settings_av1_sw_speed_values" />
+        <SwitchPreference
+            android:key="pref_av1_10bit"
+            android:defaultValue="false"
+            android:title="@string/settings_av1_10bit"
+            android:summary="@string/settings_av1_10bit_summary" />
+        <ListPreference
+            android:key="pref_denoise"
+            android:defaultValue="off"
+            android:summary="%s"
+            android:title="@string/settings_denoise"
+            android:entries="@array/settings_denoise"
+            android:entryValues="@array/settings_denoise_values" />
+        <SwitchPreference
+            android:key="pref_auto_crop"
+            android:defaultValue="false"
+            android:title="@string/settings_auto_crop"
+            android:summary="@string/settings_auto_crop_summary" />
+        <ListPreference
+            android:key="pref_audio_bitrate"
+            android:defaultValue="0"
+            android:summary="%s"
+            android:title="@string/settings_audio_bitrate"
+            android:entries="@array/settings_audio_bitrate"
+            android:entryValues="@array/settings_audio_bitrate_values" />
+        <ListPreference
+            android:key="pref_audio_channels"
+            android:defaultValue="0"
+            android:summary="%s"
+            android:title="@string/settings_audio_channels"
+            android:entries="@array/settings_audio_channels"
+            android:entryValues="@array/settings_audio_channels_values" />
+        <ListPreference
+            android:key="pref_audio_track"
+            android:defaultValue="0"
+            android:summary="%s"
+            android:title="@string/settings_audio_track"
+            android:entries="@array/settings_audio_track"
+            android:entryValues="@array/settings_audio_track_values" />
+        <ListPreference
+            android:key="pref_subtitles"
+            android:defaultValue="auto"
+            android:summary="%s"
+            android:title="@string/settings_subtitles"
+            android:entries="@array/settings_subtitles"
+            android:entryValues="@array/settings_subtitles_values" />
+        <ListPreference
+            android:key="pref_test_excerpt"
+            android:defaultValue="0"
+            android:summary="%s"
+            android:title="@string/settings_test_excerpt"
+            android:entries="@array/settings_test_excerpt"
+            android:entryValues="@array/settings_test_excerpt_values" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="prefs_deinterlace"
+        android:title="@string/settings_deinterlace_options_title"
+        android:summary="@string/settings_deinterlace_options_summary">
+        <SwitchPreference
+            android:key="pref_deinterlace"
+            android:defaultValue="false"
+            android:title="@string/settings_deinterlace"
+            android:summary="@string/settings_deinterlace_summary" />
+        <ListPreference
+            android:key="pref_deinterlace_method"
+            android:dependency="pref_deinterlace"
+            android:defaultValue="bwdif"
+            android:summary="%s"
+            android:title="@string/settings_deinterlace_method"
+            android:entries="@array/settings_deinterlace_method"
+            android:entryValues="@array/settings_deinterlace_method_values" />
+        <ListPreference
+            android:key="pref_deinterlace_frames"
+            android:dependency="pref_deinterlace"
+            android:defaultValue="interlaced"
+            android:summary="%s"
+            android:title="@string/settings_deinterlace_frames"
+            android:entries="@array/settings_deinterlace_frames"
+            android:entryValues="@array/settings_deinterlace_frames_values" />
+        <ListPreference
+            android:key="pref_deinterlace_mode"
+            android:dependency="pref_deinterlace"
+            android:defaultValue="send_field"
+            android:summary="%s"
+            android:title="@string/settings_deinterlace_mode"
+            android:entries="@array/settings_deinterlace_mode"
+            android:entryValues="@array/settings_deinterlace_mode_values" />
+        <ListPreference
+            android:key="pref_deinterlace_parity"
+            android:dependency="pref_deinterlace"
+            android:defaultValue="auto"
+            android:summary="%s"
+            android:title="@string/settings_deinterlace_parity"
+            android:entries="@array/settings_deinterlace_parity"
+            android:entryValues="@array/settings_deinterlace_parity_values" />
+        <ListPreference
+            android:key="pref_deinterlace_aspect"
+            android:dependency="pref_deinterlace"
+            android:defaultValue="SOURCE"
+            android:summary="%s"
+            android:title="@string/settings_deinterlace_aspect"
+            android:entries="@array/settings_deinterlace_aspect"
+            android:entryValues="@array/settings_deinterlace_aspect_values" />
+        <SwitchPreference
+            android:key="pref_deinterlace_upscale_1080"
+            android:dependency="pref_deinterlace"
+            android:defaultValue="false"
+            android:title="@string/settings_deinterlace_upscale_1080"
+            android:summary="@string/settings_deinterlace_upscale_1080_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="prefs_long_encodes"
+        android:title="@string/settings_long_encodes_title">
+        <SwitchPreference
+            android:key="pref_keep_alive"
+            android:defaultValue="true"
+            android:title="@string/settings_keep_alive"
+            android:summary="@string/settings_keep_alive_summary" />
+        <SwitchPreference
+            android:key="pref_save_copy"
+            android:defaultValue="true"
+            android:title="@string/settings_save_copy"
+            android:summary="@string/settings_save_copy_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory

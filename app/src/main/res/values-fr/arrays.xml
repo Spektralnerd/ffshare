@@ -119,6 +119,8 @@
         <item>H.265/HEVC</item>
         <item>VP9</item>
         <item>MPEG-4</item>
+        <item>AV1 (encodeur matériel si disponible, sinon logiciel)</item>
+        <item>AV1 logiciel uniquement (libaom, lent)</item>
     </string-array>
     <string-array name="settings_video_codec_values">
         <item>COPIE</item>
@@ -127,6 +129,8 @@
         <item>H265</item>
         <item>VP9</item>
         <item>MPEG4</item>
+        <item>AV1</item>
+        <item>AV1_SOFTWARE</item>
     </string-array>
 
     <string-array name="settings_audio_codec">

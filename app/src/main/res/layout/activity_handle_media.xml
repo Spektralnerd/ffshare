@@ -23,6 +23,8 @@
         android:breakStrategy="simple"
         android:fontFamily="monospace"
         android:hyphenationFrequency="none"
+        android:maxLines="9"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
         app:layout_constraintHorizontal_bias="1.0"
@@ -175,14 +177,20 @@
         app:layout_constraintStart_toStartOf="@+id/tableLayout2"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 
+    <!-- status line below the cancel button (above the command it was pushed off the screen by long
+         commands): "2 of 5 · Pass 2/2 · 0.84 fps · about 13 h 05 min left · running 2 h 10 min" -->
     <TextView
         android:id="@+id/txtCommandNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lblFfmpegCommand"
-        app:layout_constraintEnd_toEndOf="@+id/lblFfmpegCommand"
-        app:layout_constraintStart_toStartOf="@+id/lblFfmpegCommand" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

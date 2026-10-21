@@ -1,0 +1,2 @@
+FFShare Deint 2.0.0-deint.5
+- 32-bit ARM devices (armeabi-v7a) get ffmpeg and all libraries built with NEON (several times faster encoding and filtering than the previous plain ARMv7 build)

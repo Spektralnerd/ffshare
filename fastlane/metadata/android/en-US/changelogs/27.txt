@@ -1,0 +1,3 @@
+FFShare Deint 2.0.0-deint.4
+- Audio track selection when sharing: a list of the file's real tracks (language, codec, channels, bitrate) to tick, any number of them; the anime preset uses it
+- Steady progress and remaining time in every pass (ffmpeg 8.1 reports no time while a stream such as DVD subtitles has no packet yet)

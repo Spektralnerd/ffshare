@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">FFShare</string>
+    <string name="app_name">FFShare Deint</string>
     <string name="menu_item_settings">Settings</string>
     <string name="menu_item_logs">Logs</string>
     <string name="menu_item_delete_logs">Delete all Logs</string>
@@ -94,6 +94,103 @@
 
     <string name="settings_video_codec" tools:ignore="MissingTranslation">Video Codec</string>
     <string name="settings_audio_codec" tools:ignore="MissingTranslation">Audio Codec</string>
+
+    <string name="settings_av1_hw_bitrate" tools:ignore="MissingTranslation">AV1 hardware encoder bitrate</string>
+    <string name="settings_av1_hw_bitrate_summary" tools:ignore="MissingTranslation">Only for the MediaCodec AV1 encoder (no CRF there). Software AV1 uses the CRF value</string>
+
+    <string name="settings_deinterlace_options_title" tools:ignore="MissingTranslation">Deinterlace</string>
+    <string name="settings_deinterlace_options_summary" tools:ignore="MissingTranslation">For interlaced sources (analogue video, DV, 576i/480i recordings)</string>
+    <string name="settings_deinterlace" tools:ignore="MissingTranslation">Deinterlace videos (bwdif)</string>
+    <string name="settings_deinterlace_summary" tools:ignore="MissingTranslation">Converts fields to frames. Ignored when custom video parameters are set</string>
+    <string name="settings_deinterlace_frames" tools:ignore="MissingTranslation">Apply to</string>
+    <string name="settings_deinterlace_mode" tools:ignore="MissingTranslation">Output frame rate</string>
+    <string name="settings_deinterlace_parity" tools:ignore="MissingTranslation">Field order</string>
+    <string name="settings_deinterlace_aspect" tools:ignore="MissingTranslation">Display aspect ratio</string>
+    <string name="settings_deinterlace_upscale_1080" tools:ignore="MissingTranslation">Upscale to 1080 lines</string>
+    <string name="settings_deinterlace_upscale_1080_summary" tools:ignore="MissingTranslation">Square pixels, 4:3 becomes 1440×1080 and 16:9 becomes 1920×1080 (useful for YouTube, slow on phones)</string>
+
+    <string name="settings_deinterlace_method" tools:ignore="MissingTranslation">Method</string>
+
+    <string name="settings_low_bitrate_title" tools:ignore="MissingTranslation">Small files (AV1, anime, DVD)</string>
+    <string name="settings_low_bitrate_summary" tools:ignore="MissingTranslation">Two-pass, encoder speed, filters and audio for very low bitrates</string>
+    <string name="settings_anime_preset" tools:ignore="MissingTranslation">Apply anime DVD preset</string>
+    <string name="settings_anime_preset_summary" tools:ignore="MissingTranslation">PAL anime/cartoon DVD to a tiny AV1 file: field matching to 25p, border crop, NL-means, AV1 speed 2 in 10 bit, two-pass 150 kbit/s, 480p, Opus 32 kbit/s stereo, MKV</string>
+    <string name="settings_anime_preset_confirm" tools:ignore="MissingTranslation">Sets: deinterlace with field matching (25p), automatic border crop, NL-means denoise, AV1 software at speed 2 in 10 bit, two-pass at 150 kbit/s, max. 480p, Opus 32 kbit/s stereo, MKV output, audio and subtitle tracks to tick when sharing, keep converting with the screen off, save a copy to Movies.\n\nCustom video parameters are cleared. The CRF stays as it is.\n\n“Undo anime preset” brings back the settings from before.</string>
+    <string name="settings_anime_preset_apply" tools:ignore="MissingTranslation">Apply</string>
+    <string name="settings_anime_preset_applied" tools:ignore="MissingTranslation">Anime preset applied</string>
+    <string name="settings_anime_preset_undo" tools:ignore="MissingTranslation">Undo anime preset</string>
+    <string name="settings_anime_preset_undo_summary" tools:ignore="MissingTranslation">Back to the settings from before the preset (saved %1$s)</string>
+    <string name="settings_anime_preset_undo_summary_defaults" tools:ignore="MissingTranslation">No settings from before the preset are saved: puts the settings the preset changes back to the app defaults</string>
+    <string name="settings_anime_preset_undo_confirm" tools:ignore="MissingTranslation">These settings go back to how they were before the anime preset (saved %1$s). Everything else stays as it is.</string>
+    <string name="settings_anime_preset_undo_confirm_defaults" tools:ignore="MissingTranslation">No settings from before the preset are saved (it was applied with an older version of the app, or already undone). These settings go back to the app defaults. Everything else stays as it is.</string>
+    <string name="settings_anime_preset_undo_apply" tools:ignore="MissingTranslation">Undo</string>
+    <string name="settings_anime_preset_undone" tools:ignore="MissingTranslation">Settings restored</string>
+    <string name="settings_anime_preset_undo_nothing" tools:ignore="MissingTranslation">Nothing to change</string>
+    <string name="settings_preset_running_hint" tools:ignore="MissingTranslation">A conversion is running. Files still waiting in the batch will use the new settings, so it is best to change them after the batch has finished.</string>
+    <string name="settings_value_on" tools:ignore="MissingTranslation">on</string>
+    <string name="settings_value_off" tools:ignore="MissingTranslation">off</string>
+    <string name="settings_value_empty" tools:ignore="MissingTranslation">(empty)</string>
+
+    <string name="settings_two_pass" tools:ignore="MissingTranslation">Two-pass encoding</string>
+    <string name="settings_two_pass_summary" tools:ignore="MissingTranslation">Analysis pass first, then the real encode with the statistics of the whole video: the size lands close to the target (short simple clips may stay below it), bits go where they are needed. AV1 software, VP9, H.264 (H.264 only with a bitrate). Takes about 10 to 30 percent longer</string>
+    <string name="settings_two_pass_bitrate" tools:ignore="MissingTranslation">Two-pass video bitrate</string>
+    <string name="settings_prefilter" tools:ignore="MissingTranslation">Filter once (FFV1 intermediate file)</string>
+    <string name="settings_prefilter_summary" tools:ignore="MissingTranslation">Deinterlacing, border crop, denoising and scaling run once into a lossless FFV1 file in app storage, and both passes read it instead of filtering the source twice. Practically the same result, saves one whole filter run (with NL-means about 15 to 20 percent of the time). Needs about 4 GB free per 24-minute DVD episode at 480p while it is converted; without enough room the passes filter as usual. Not used for test excerpts</string>
+    <string name="settings_av1_sw_speed" tools:ignore="MissingTranslation">AV1 software speed (libaom cpu-used)</string>
+    <string name="settings_av1_10bit" tools:ignore="MissingTranslation">AV1 software in 10 bit</string>
+    <string name="settings_av1_10bit_summary" tools:ignore="MissingTranslation">Less banding in gradients and dark scenes, usually a little smaller; slower to encode. Every AV1 decoder plays it</string>
+    <string name="settings_denoise" tools:ignore="MissingTranslation">Denoise before encoding</string>
+    <string name="settings_auto_crop" tools:ignore="MissingTranslation">Crop black borders automatically</string>
+    <string name="settings_auto_crop_summary" tools:ignore="MissingTranslation">Scans the key frames of the whole video first (a minute or two) and removes black bars; letterboxed videos save a lot</string>
+    <string name="settings_test_excerpt" tools:ignore="MissingTranslation">Test excerpt</string>
+    <string name="settings_audio_bitrate" tools:ignore="MissingTranslation">Audio bitrate</string>
+    <string name="settings_audio_channels" tools:ignore="MissingTranslation">Audio channels</string>
+    <string name="settings_audio_track" tools:ignore="MissingTranslation">Audio track</string>
+    <string name="settings_subtitles" tools:ignore="MissingTranslation">Subtitles</string>
+
+    <string name="settings_long_encodes_title" tools:ignore="MissingTranslation">Long conversions</string>
+    <string name="settings_keep_alive" tools:ignore="MissingTranslation">Keep converting with the screen off</string>
+    <string name="settings_keep_alive_summary" tools:ignore="MissingTranslation">Foreground service with notification and wake lock: the conversion goes on when the screen turns off or another app is opened, and after 10 minutes the screen may time out. Off: it stops when you leave the screen (original behaviour)</string>
+    <string name="settings_save_copy" tools:ignore="MissingTranslation">Save a copy to Movies/FFShare Deint</string>
+    <string name="settings_save_copy_summary" tools:ignore="MissingTranslation">Finished videos are also copied there. The shared file in the cache is deleted after a while. Android 7 to 9 needs the storage permission for this, without it the copy goes to Android/data/…/files/Movies, which is deleted together with the app</string>
+
+    <string name="notification_channel_encode" tools:ignore="MissingTranslation">Conversions</string>
+    <string name="notification_channel_encode_description" tools:ignore="MissingTranslation">Progress of running conversions</string>
+    <string name="notification_encoding_title" tools:ignore="MissingTranslation">Converting</string>
+    <string name="notification_cancel_confirm" tools:ignore="MissingTranslation">Really cancel</string>
+    <string name="notification_cancel_armed" tools:ignore="MissingTranslation">Tap “Really cancel” within 10 seconds to stop the conversion.\n%1$s</string>
+    <string name="notification_done_title" tools:ignore="MissingTranslation">Finished: %1$s</string>
+    <string name="notification_done" tools:ignore="MissingTranslation">%1$s, ready to share</string>
+    <string name="notification_done_saved" tools:ignore="MissingTranslation">%1$s, saved to %2$s</string>
+    <string name="notification_size_time" tools:ignore="MissingTranslation">%1$s in %2$s</string>
+    <string name="notification_failed_title" tools:ignore="MissingTranslation">Failed: %1$s</string>
+    <string name="notification_failed" tools:ignore="MissingTranslation">The ffmpeg output is under Logs in FFShare Deint</string>
+
+    <string name="status_copying_input" tools:ignore="MissingTranslation">Copying the input file</string>
+    <string name="status_crop_detect" tools:ignore="MissingTranslation">Detecting black borders</string>
+    <string name="status_prefilter" tools:ignore="MissingTranslation">Filtering once (FFV1)</string>
+    <string name="status_pass" tools:ignore="MissingTranslation">Pass %1$d/%2$d</string>
+    <string name="status_eta" tools:ignore="MissingTranslation">about %1$s left</string>
+    <string name="status_elapsed" tools:ignore="MissingTranslation">running %1$s</string>
+    <string name="status_test_excerpt" tools:ignore="MissingTranslation">test excerpt %1$s</string>
+
+    <string name="cancel_confirm_title" tools:ignore="MissingTranslation">Cancel conversion?</string>
+    <string name="cancel_confirm_message" tools:ignore="MissingTranslation">This conversion has been running for %1$s. Everything done so far is lost.</string>
+    <string name="cancel_confirm_yes" tools:ignore="MissingTranslation">Cancel conversion</string>
+    <string name="cancel_confirm_no" tools:ignore="MissingTranslation">Keep converting</string>
+    <string name="saved_copy_toast" tools:ignore="MissingTranslation">Saved to %1$s</string>
+    <string name="busy_toast" tools:ignore="MissingTranslation">Another conversion is still running. Share again when it has finished.</string>
+    <string name="audio_tracks_title" tools:ignore="MissingTranslation">Audio tracks to keep</string>
+    <string name="audio_tracks_title_batch" tools:ignore="MissingTranslation">Audio tracks to keep (all %1$d files)</string>
+    <string name="audio_tracks_convert" tools:ignore="MissingTranslation">Convert</string>
+    <string name="audio_track_number" tools:ignore="MissingTranslation">Track %1$d</string>
+    <string name="subtitle_tracks_title" tools:ignore="MissingTranslation">Subtitle tracks to keep</string>
+    <string name="subtitle_tracks_title_batch" tools:ignore="MissingTranslation">Subtitle tracks to keep (all %1$d files)</string>
+    <string name="tracks_next" tools:ignore="MissingTranslation">Next</string>
+    <plurals name="subtitle_entries" tools:ignore="MissingTranslation">
+        <item quantity="one">%1$d entry</item>
+        <item quantity="other">%1$d entries</item>
+    </plurals>
 
     <string name="settings_custom_params_title" tools:ignore="MissingTranslation">Custom Parameters</string>
     <string name="settings_custom_params_summary" tools:ignore="MissingTranslation">If set, only these parameters will be used</string>
